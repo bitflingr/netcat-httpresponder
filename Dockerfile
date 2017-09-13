@@ -10,10 +10,7 @@ RUN apk update \
   && rm -rf /var/cache/apk/* 
 
 EXPOSE $PORT
-
 COPY nc.template /tmp/nc.template
 
-#CMD bundle exec puma -e development -p $PORT -s ./tmp/puma.state -t 4:40 -w 4
-#CMD envsubst < /etc/nginx/conf.d/nginx.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'
 CMD envsubst < /tmp/nc.template > /tmp/nc.txt && \
 while true; do cat /tmp/nc.txt | nc -l  ${PORT}; done
