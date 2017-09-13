@@ -1,0 +1,4 @@
+HTTP/1.1 ${RESPONSE_CODE} ${RESPONSE_MESSAGE}
+Content-Length: 0
+Connection: close
+
